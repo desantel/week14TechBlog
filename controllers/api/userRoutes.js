@@ -8,7 +8,7 @@ router.post('./login', async (req,res) => {
          if (!userData) {
              res
                 .status(400)
-                .json({ message: 'Nothing found' });
+                .json({ message: 'Incorrect username or password' });
             return;
          }
 

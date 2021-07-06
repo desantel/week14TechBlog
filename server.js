@@ -1,3 +1,4 @@
+//modules and packages
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -6,6 +7,8 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
+
+require('dotenv').config();
 
 //New sequelize store
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -17,7 +20,7 @@ const hbs = exphbs.create({ helpers });
 
 //configure and link a session object with sequelize store
 const sess = {
-    secret: '',
+    secret: 'secret session',
     cookie: {},
     resave: false,
     saveUnitialized: true,
@@ -36,8 +39,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//routes
 app.use(routes);
 
 sequelize.sync({ force:false }).then(() => {
-    app.listen(PORT, () => console.log(`Now listening on port ${PORT}`))
+    app.listen(port, () => console.log(`Now listening on port ${port}`))
 });

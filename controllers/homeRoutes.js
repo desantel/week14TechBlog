@@ -1,30 +1,35 @@
-const router = require('express').Router();
-const { User } = require('../models');
-const withAuth = require('../utils/auth');
+// const router = require('express').Router();
+// const { User, Blog } = require('../models');
+// const withAuth = require('../utils/auth');
 
-//stops users not logged in from accessing pages
-router.get('/', withAuth, async (req, res) => {
-    try {
-        const userData = await User.findAll({
-            attributes: { exclude: ['password'] },
-            order: [['name', 'ASC']],
-        });
-        const users = userData.map((project) => project.get({ plain:true }));
+// //stops users not logged in from accessing pages
+// router.get('/', withAuth, async (req, res) => {
+//     try {
+//         const userData = await User.findAll({
+//             attributes: { exclude: ['password'] },
+//             order: [['name', 'ASC']],
+//         });
+//         const users = userData.map((project) => project.get({ plain:true }));
 
-        res.render('homepage', {
-            users,
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+//         res.render('homepage', {
+//             users,
+//             logged_in: req.session.logged_in,
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
-router.get('/login', (req,res) => {
-    if (req.session.logged_in) {
-        res.redirect('/');
-        return;
-    }
-});
+// router.get('/login', (req,res) => {
+//     if (req.session.logged_in) {
+//         res.redirect('/');
+//         return;
+//     }
+// });
 
-module.exports = router;
+// //new comment
+// router.post('/new', withAuth, async (req,res) => {
+//     res.render('user', {logged_in: true})
+// })
+
+// module.exports = router;

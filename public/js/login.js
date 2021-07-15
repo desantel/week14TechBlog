@@ -34,7 +34,8 @@ const loginFormHandler = async (event) => {
         method: 'POST',
         body: JSON.stringify({ name, email, password }),
         headers: { 'Content-Type': 'application/json' },
-      });
+      },
+      console.log(email));
       if (response.ok) {
         document.location.replace('/profile');
       } else {

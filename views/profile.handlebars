@@ -30,10 +30,10 @@
     {{#each blogs as |blog|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/project/{{blog.id}}">{{blog.name}}</a></h4>
+        <h4><a href="/blogs/{{blog.id}}">{{blog.name}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
+        <button id="delete" class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
@@ -42,3 +42,4 @@
 </div>
 
 <script src="./js/profile.js"></script>
+{{!-- <script src="./js/blog.js"></script> --}}
